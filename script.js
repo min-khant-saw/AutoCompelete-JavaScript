@@ -99,10 +99,10 @@ function selected(index) {
 
 function unSelected() {
   LeaveSelected();
-  const filterProductIdTagCass = document.querySelector(".selected");
-  filterProductIdTagCass.style.color = "#000";
-  filterProductIdTagCass.style.backgroundColor = "#fff";
-  filterProductIdTagCass.classList.remove("selected");
+  const filterProductIdTagClass = document.querySelector(".selected");
+  filterProductIdTagClass.style.color = "#000";
+  filterProductIdTagClass.style.backgroundColor = "#fff";
+  filterProductIdTagClass.classList.remove("selected");
 }
 
 function LeaveSelected() {
