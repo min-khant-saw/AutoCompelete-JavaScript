@@ -21,7 +21,29 @@ fetchDataServer(url).catch((error) => {
   console.log(error);
 });
 
+/**
+ fetch(url)
+  .then((respones) => {
+    return respones.json();
+  })
+  .then((products) => {
+    inputTag.disabled = false;
+    inputTag.placeholder = "Search product";
+    inputTag.classList.remove("red");
+    result = products;
+  })
+  .catch((err) => {
+    console.log(err);
+  });
+ */
+
 inputTag.addEventListener("keyup", (event) => {
+  if (
+    (event.key === "Enter" && indexToSelect === -1) ||
+    (event.key === "Shift" && event.key === "Enter")
+  ) {
+    return;
+  }
   if (
     event.key === "ArrowDown" ||
     event.key === "ArrowUp" ||
@@ -30,12 +52,11 @@ inputTag.addEventListener("keyup", (event) => {
     myKeyFunc(event.key);
     return;
   }
+
   resultContainer.innerHTML = "";
   const searchText = event.target.value.toLowerCase();
-  if (event.key === "Backspace" || searchText === "") {
-    indexToSelect = -1;
-    // return;
-  }
+  emptyValue(event.key);
+
   if (searchText.length === 0) {
     return;
   }
@@ -99,14 +120,23 @@ function selected(index) {
 
 function unSelected() {
   LeaveSelected();
-  const filterProductIdTagClass = document.querySelector(".selected");
-  filterProductIdTagClass.style.color = "#000";
-  filterProductIdTagClass.style.backgroundColor = "#fff";
-  filterProductIdTagClass.classList.remove("selected");
+  const filterProductIdTagCass = document.querySelector(".selected");
+  filterProductIdTagCass.style.color = "#000";
+  filterProductIdTagCass.style.backgroundColor = "#fff";
+  filterProductIdTagCass.classList.remove("selected");
 }
 
 function LeaveSelected() {
   if (resultContainer.innerHTML === "") {
+    return;
+  }
+}
+
+function emptyValue(key) {
+  if (key === "Backspace") {
+    indexToSelect = -1;
+  }
+  if (key === "Shift") {
     return;
   }
 }
