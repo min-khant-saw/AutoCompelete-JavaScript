@@ -44,6 +44,11 @@ inputTag.addEventListener("keyup", (event) => {
   ) {
     return;
   }
+  if (event.target.value === "") {
+    resultContainer.innerHTML = "";
+    indexToSelect = -1;
+    return;
+  }
   if (
     event.key === "ArrowDown" ||
     event.key === "ArrowUp" ||
@@ -132,11 +137,11 @@ function LeaveSelected() {
   }
 }
 
-function emptyValue(key) {
-  if (key === "Backspace") {
+function emptyValue(key2) {
+  if (key2 === "Backspace") {
     indexToSelect = -1;
   }
-  if (key === "Shift") {
+  if (key2 === "Shift") {
     return;
   }
 }
