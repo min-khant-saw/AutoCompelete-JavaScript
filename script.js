@@ -21,22 +21,6 @@ fetchDataServer(url).catch((error) => {
   console.log(error);
 });
 
-/**
- fetch(url)
-  .then((respones) => {
-    return respones.json();
-  })
-  .then((products) => {
-    inputTag.disabled = false;
-    inputTag.placeholder = "Search product";
-    inputTag.classList.remove("red");
-    result = products;
-  })
-  .catch((err) => {
-    console.log(err);
-  });
- */
-
 inputTag.addEventListener("keyup", (event) => {
   if (
     event.key === "ArrowDown" ||
